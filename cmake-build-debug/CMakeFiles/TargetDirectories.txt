@@ -1,0 +1,3 @@
+C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/CMakeFiles/TRIETree.dir
+C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/CMakeFiles/rebuild_cache.dir

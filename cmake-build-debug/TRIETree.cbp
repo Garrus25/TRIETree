@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TRIETree"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TRIETree">
+				<Option output="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/TRIETree.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/x86_64-w64-mingw32"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/include"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 TRIETree"/>
+					<CompileFile command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TRIETree/fast">
+				<Option output="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/TRIETree.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/x86_64-w64-mingw32"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/include"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed"/>
+					<Add directory="d:\das\mingw\bin\../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 TRIETree/fast"/>
+					<CompileFile command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/das/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/main.cpp">
+			<Option target="TRIETree"/>
+		</Unit>
+		<Unit filename="C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

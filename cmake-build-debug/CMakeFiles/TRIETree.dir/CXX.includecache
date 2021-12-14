@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/main.cpp
+iostream
+-
+string
+-
+vector
+C:/Users/mati1/Desktop/C++ repos/LK 21.11/TRIETree/vector
+
