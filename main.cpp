@@ -14,17 +14,17 @@ private:
     Node *root;
 
     /**
-     * Zwracanie wartości powiązanej z kluczem z drzewa TRIE o korzeniu x
+     * Służy do zwracania wartości powiązanej z kluczem z drzewa TRIE o korzeniu x
      *
      * @param x - węzeł od którego rozpoczynamy wyszukiwanie
-     * @param key - słowo którego szukamy
+     * @param key - klucz, słowo którego szukamy
      * @param d - indeks aktualnie przetwarzanej litery w słowie
-     * @return - jeżeli nie znajdujemy wartości zwracamy 0, jeśli znajdujemy to zwracamy powiązany z nią indeks
+     * @return - jeżeli nie znajdujemy wartości zwracamy null, jeśli znajdujemy to zwracamy powiązany z nią węzeł
      *
      * jeśli (węzeł nie istnieje) zwracamy null
-       jeśli (aktualnie przetwarzana litera = długość słowa) zwracamy x
-       deklaracja kolejnej litery w słowie = słowo którego szukamy[indeks aktualnie przetwarzanej litery w słowie]
-       rekurencyjnie wywołujemy tę samą metodę z następującymi argumentami(następny węzeł odpowiadający konkretnej literze
+       jeśli (aktualnie przetwarzana litera = długość słowa) zwracamy znaleziony węzeł
+       deklaracja kolejnej litery w słowie i przypisanie do niej słowa którego szukamy[indeks aktualnie przetwarzanej litery w słowie]
+       przechodzimy do następnego węzła oraz sprawdzamy następną literę w danym słowie; rekurencyjnie wywołujemy metodę get z nastepującymi argumentami(następny węzeł odpowiadający konkretnej literze)
        klucz, indeks aktualnie przetwarzanej litery w kluczu +1)
      *
      */
@@ -35,25 +35,27 @@ private:
         return get(x->next[c], key, d + 1);
     }
 
+
     /**
-     * wstawia słowo do drzewa TRIE
+     * Służy do wstawiania słowa do drzewa TRIE
      *
      * @param x - węzeł od którego rozpoczynamy wstawianie
-     * @param key - słowo które wstawiamy
+     * @param key - klucz, słowo które wstawiamy
      * @param value - wartość odpowiadająca danemu słowu
      * @param d - indeks aktualnie przetwarzanej litery w słowie
      * @return - zwraca przetworzony węzeł
      *
      * jeśli węzeł x nie istnieje
      *  tworzymy go
-       jeśli aktualnie przetwarzana pozycja w słowie jest równa jego końcowi
+       jeśli aktualnie przetwarzana pozycja w słowie jest równa jego ostatniemu znakowi
         do węzła końcowego przypisujemy wartość odpowiadającą wstawianemu słowu
-        i zwracamy węzeł
+        usuwa klucz jeśli wartość przypisana danemu słowu jest równa 0
+        i zwracamy ten wezeł
 
-       deklaracja kolejnej litery w słowie = słowo które wstawiamy[indeks aktualnie przetwarzanej litery w słowie]
-       węzeł[następny poziom] = rekurencyjnie wywołanie tej samej metody aby w następnym poziomie wstawić daną literę
+       deklaracja kolejnej litery w słowie i przypisanie do niej słowa które wstawiamy[indeks aktualnie przetwarzanej litery w słowie]
+       ustawienie następnego poziomu węzła[na kolejną literę w słowie] - rekurencyjnie wywołanie tej samej metody aby w następnym poziomie wstawić daną literę
        (węzeł[następny poziom],słowo którego szukamy,wartość odpowiadająca danemu słowu, indeks aktualnie przetwarzanej litery w kluczu +1)
-       zwracamy korzeń drzewa
+       zwracamy węzeł końcowy
      */
     Node *insert(Node *x, string key, int value, int d) {
         if (x == nullptr) {
@@ -69,7 +71,7 @@ private:
     }
 
     /**
-     * Wyszukuje najdłuższy przedrostek danego słowa
+     * Służy do wyszukiwania najdłuższego przedrostka danego słowa
      *
      * @param x - węzeł który aktualnie przetwarzamy
      * @param query - łańcuch znaków dla którego szukamy najdłuższego przedrostka
@@ -78,10 +80,10 @@ private:
      * @return - zwraca ilość aktualnie pasujących do słowa liter
      *
      * jeśli (węzeł który aktualnie przetwarzamy nie istnieje) zwracamy zwraca ilość aktualnie pasujących do słowa liter
-       jeśli (w danym węźle kończy się słowo) zwracana ilość aktualnie pasujących do słowa liter = indeks aktualnie przetwarzanej litery w słowie;
-       jeśli (indeks aktualnie przetwarzanej litery w słowie = długość słowa) zwracamy długość przedrostka jako całe słowo
+       jeśli (w danym węźle kończy się słowo) ilość aktualnie pasujących do słowa liter = indeks aktualnie przetwarzanej litery w słowie;
+       jeśli (indeks aktualnie przetwarzanej litery w słowie jest rowny długości słowa) zwracamy długość przedrostka jako całe słowo
        deklaracja kolejnej litery w słowie = słowo którego prefiksu szukamy [indeks aktualnie przetwarzanej litery w słowie]
-       rekurencyjne wywołujemy te samą metodę z argumentami (węzeł[następny poziom],łańcuch znaków dla którego szukamy najdłuższego przedrostka,
+       sprawdzamy następny poziom w drzewie dla następnej litery - rekurencyjne wywołujemy te samą metodę z argumentami (węzeł[następny poziom],łańcuch znaków dla którego szukamy najdłuższego przedrostka,
        indeks aktualnie przetwarzanej litery w słowie,ilość już pasujących do słowa liter)
      */
     int longestPrefixOf(Node *x, string query, int d, int length) {
@@ -99,12 +101,12 @@ private:
      * @param key - klucz którego część już dopasowaliśmy
      * @param queue - służy do przechowywania wszystkich słów
      *
-     * jeżeli (węzeł jest pusty)
-     *  zakończ gałęź rekurencji
+     * jeśli węzeł jest pusty
+     *  przerywamy pracę metody
        jeśli w danym węźle kończy się słowo
-        dodaj słowo do vectora
-       przejdź przez cały alfabet w danym węźle
-        i wywołaj rekurencyjnie metodę collect z argumentami (węzeł odpowiadający danej literze w alfabecie,klucz zwiększony o daną literę w alfabecie,
+        dodaj słowo do wektora
+       przechodzimy przez cały alfabet w danym węźle
+        i wywołujemy rekurencyjnie metodę collect z argumentami (węzeł odpowiadający danej literze w alfabecie,klucz zwiększony o daną literę w alfabecie,
         vector)
         aby znaleźć pozostałe słowa
      */
@@ -121,25 +123,25 @@ private:
     }
 
     /**
-     * Usuwa klucz z drzewa TRIE
+     * Służy do usuwania kluczy z drzewa TRIE
      *
      * @param x - węzeł który aktualnie przetwarzamy
      * @param key - klucz który zostanie usunięty
      * @param d - indeks aktualnie przetwarzanej litery w słowie
      * @return - zwraca przetworzony węzeł
      *
-     * jeśli (węzeł który aktualnie przetwarzamy jest pusty) zwracamy pusty wskaźnik;
-        jeśli (indeks aktualnie przetwarzanej litery w słowie jest równy długości słowa) usuń znacznik końca słowa w danym węźle = 0;
+     * jeśli (węzeł który aktualnie przetwarzamy jest pusty) zwracamy null;
+        jeśli (indeks aktualnie przetwarzanej litery w słowie jest równy długości słowa) usuń znacznik końca słowa w danym węźle poprzez przypisanie do niego wartośći 0
         w przeciwnym wypadku
          deklaracja kolejnej litery w słowie = słowo którego prefiksu szukamy [indeks aktualnie przetwarzanej litery w słowie]
-         rekurencyjne wywołanie metody kasującej kolejne litery danego słowa klucza z argumentami(węzeł[następny poziom],
+         rekurencyjne wywołanie metody usuwającej kolejne litery danego słowa klucza z argumentami(węzeł[następny poziom],
          klucz, indeks aktualnie przetwarzanej litery w słowie + 1)
 
         jeśli (wartość w aktualnie przetwarzanym węźle nie jest równa 0) zwracamy aktualnie przetwarzany węzeł;
         przejdź przez cały alfabet w danym węźle
             jeśli następny znak nie jest nullem
                 zwracamy aktualnie przetwarzany węzeł;
-        zwracamy nullptr;
+        zwracamy null;
      */
     Node *del(Node *x, string key, int d) {
         if (x == nullptr) return nullptr;
@@ -155,15 +157,40 @@ private:
         return nullptr;
     }
 
+
+    /** Służy do zwracania ilości słów w drzewie
+     *
+     * @param x - węzeł od którego rozpoczynamy sprawdzanie
+     * @return - ilość słów w drzewie
+     *
+     * jeśli węzeł od którego rozpoczynamy sprawdzanie nie istnieje zwracamy 0
+        deklaracja licznika i zainicjowanie go wartością 0
+        jeśli wartość w danym węźle nie jest rowna 0 inkrementujemy licznik
+        przechodzimy przez cały alfabet
+            do licznika przypisujemy wartość zwróconą przez rekurencyjne wywołanie tej samej metody z pracującej na następnym poziomie -  size(x->next[i]);
+        zwracamy licznik
+     */
+    int size(Node *x) {
+        if (x == nullptr) return 0;
+
+        int counter = 0;
+        if (x->value != 0) counter++;
+
+        for (char i = 0; i < 127; i++) {
+            counter += size(x->next[i]);
+        }
+        return counter;
+    }
+
 public:
-    /**
+    /** Służy do zwracania wartości powiązanej z kluczem z drzewa TRIE o korzeniu x
      *
      * @param key - słowo którego szukamy
      * @return zwraca wartość przypisaną danemu słowu w drzewie TRIE, 0 jeśli klucz nie znajduje się w drzewie
      *
-     * Węzeł = wywołanie prywatnej metody get z parametrami(korzeń, słowo którego szukamy,
+     * Tworzymy nowy węzeł i przypisujemy do niego wartosć zwróconą przez prywatną metodę get z argumentami(korzeń, słowo którego szukamy,
      * indeks aktualnie przetwarzanej litery w słowie)
-        jeśli nie znaleziono klucza w drzewoe zwróć 0;
+        jeśli nie znaleziono klucza w drzewie zwróć 0;
         w przeciwnym wypadku
         zwracamy wartość odpowiadającą danemu słowu
      */
@@ -173,33 +200,33 @@ public:
         return x->value;
     }
 
-    /**
+    /** Służy do sprawdzenia czy dany klucz znajduje się w drzewie
      *
-     * @param key - klucz który sprawdzamy czy jest w drzewie
+     *
+     * @param key - sprawdzany klucz
      * @return - wywołanie metody która sprawdza czy klucz znajduje się w drzewie z argumentem (klucz)
      *
      * zwracamy wywołanie metody get(klucz) jeśli zwraca ona wartość różną od zera.
-     * Oznacza to że klucz znajduje się w drzewie.
+     * O oznacza to że klucz znajduje się w drzewie.
      */
     bool contains(string key) {
         return get(key) != 0;
     }
 
-    /**
+    /** Służy do wstawiania słowa do drzewa TRIE
      *
      * @param key - słowo które wstawiamy
      * @param value - indeks przypisany danemu słowu
      *
-     * przypisujemy do korzenia wynik zwrócony przez metodę insert z argumentami(korzeń,klucz,wartość,
+     * przypisujemy do korzenia wynik zwrócony przez prywatną metodę insert z argumentami(korzeń,klucz,wartość,
      * indeks aktualnie przetwarzanej litery w słowie)
-     * insert z argumentami(root, key, value, 0);
+     *
      */
-    //TUBYŁOAUTOJAKCOŚ
     void insert(string key, int value) {
         root = insert(root, key, value, 0);
     }
 
-    /**
+    /** Służy do wyszukiwania najdłuższego przedrostka danego słowa
      *
      * @param query - łańcuch znaków dla którego szukamy najdłuższego przedrostka
      * @return - najdłuższy pasujący przedrostek odpowiadający danemu słowu
@@ -213,7 +240,7 @@ public:
         return query.substr(0, length);
     }
 
-    /**
+    /** Służy do zwracania wszystkich kluczy dla których prefiksem jest puste słowo
      *
      * @return - wszystkie klucze dla których prefiksem jest puste słowo
      * czyli wszystkie klucze z drzewa
@@ -224,15 +251,15 @@ public:
         return keysWithPrefix("");
     }
 
-    /**
+    /** Służy do zebrania wszystkich słów pasujących do danego przedrostka w jednym wektorze
      *
      * @param prefix - dany przedrostek
      * @return - zwracamy kolekcję kluczy z danym przedrostkiem
      *
-     * utworzenie kolekcji;
-        Node *x = get(root, prefix, 0);
-        collect(x, prefix, queue);
-        return queue;
+     * utworzenie wektora
+        utworzenie nowego węzła i przypisanie do niego wartośći zwracanej przez prywatną metodę get z argumentami(korzeń, przedrostek, 0)
+        zebranie do kolekcji wszystkich słów pasujących do danego przedrostka - wywołanie prywatnej metody collect z argumentami(aktualnie przetwarzany węzeł,przedrostek,wektor)
+        zwracamy wektor słów pasujących do danego przedrostka
      */
     vector<string> keysWithPrefix(string prefix) {
         vector<string> queue;
@@ -242,9 +269,15 @@ public:
     }
 
     /**
+     * Wyszykuje słowa pasujące do danego wzorca, znakiem "." można zastąpić dowolny znak
      *
-     * @param pat
-     * @return
+     * @param pat - wzorzec
+     * @return - kolekcja słow pasujących do wzorca
+     *
+     * utworzenie wektora
+       wywołanie metody której zadaniem jest dodanie do kolekcji wszystkich słow pasujących do danego wzorca z argumentami
+       (korzeń, "", prefiks, kolekcja do której zostanie wstawione pasujące słowo)
+       zwracamy wektor pasujących słów
      */
     vector<string> keysThatMatch(string pat) {
         vector<string> q;
@@ -253,11 +286,23 @@ public:
     }
 
     /**
+     * Służy do zapisywania klucza w metodzie keysThatMatch
      *
-     * @param x
-     * @param prefix
-     * @param pat
-     * @param q
+     * @param x - węzeł który aktualnie przetwarzamy
+     * @param prefix - szukany przedrostek
+     * @param pat - wzorzec
+     * @param q - kolekcja do której zostanie wstawione odpowiednie słowo
+     *
+     * jeśli węzeł który aktualnie przetwarzamy jest pusty przerywamy pracę metody
+        jeśli długość prefiksu jest równa długości wzorca oraz wartość w węźle który aktualnie przetwarzamy nie jest równa 0
+        wstawiany do wektora aktualny prefiks
+        jeśli długość przedrostka jest równa długości wzorca przerywamy pracę metody
+        deklaracja następnej litery w słowie oraz przypisanie do niej następnego znaku wzorca
+        przechodzimy przez cały alfabet w danym węźle
+            jeśli następny znak w danym słowie jest równy "." albo jest równy znakowi na danej pozycji we wzorcu
+                wywołujemy metodę collect z argumentami (węzeł[następny poziom],prefiks + znak na danej pozycji we wzorcu,
+                wzorzec, kolekcja) wstawiającą dany klucz do kolekcji
+     *
      */
     void collect(Node *x, string prefix, string pat, vector<string> &q) {
         if (x == nullptr) return;
@@ -270,14 +315,22 @@ public:
     }
 
     /**
+     * Służy do usuwania danego klucza z drzewa
      *
-     * @param key
+     * @param key - klucz
+     *
+     * przypisanie do korzenia wartości zwróconych przez metodę del z argumentami (korzeń,klucz,0)
+     *
      */
     void del(string key) {
         root = del(root, key, 0);
     }
 
     /**
+     * Konstruktor domyślny,
+     *
+     * Utworzenie struktury przechowującej wartość oraz alfabet
+     * Przypisanie do korzenia wartości null
      *
      */
     TRIETree() {
@@ -286,10 +339,26 @@ public:
     }
 
     /**
+     * Służy do zwracania ilości słów w drzewie
      *
-     * @param out
-     * @param t
-     * @return
+     * @return zwraca ilość słów w drzewie
+     *
+     * zwracamy wartość zwracaną przez prywatną metodę size z argumentem (korzeń) -  size(root)
+     */
+    int size() {
+        return size(root);
+    }
+
+    /**
+     * Służy do wyświetlenia wszystkich kluczy w drzewie
+     *
+     * @param out - strumień wyjściowy na który zostaną wysłane dane
+     * @param t - obiekt klasy TRIETree, którego klucze mamy za zadanie wyświetlić
+     * @return - strumień wyjściowy
+     *
+     * dla każdego węzła w obiekcie t
+            przekierowujemy na strumień wyjściowy dany klucz
+        zwracamy strumień wyjściowy
      */
     friend ostream &operator<<(std::ostream &out, TRIETree &t) {
         for (auto x : t.keys()) {
@@ -298,7 +367,6 @@ public:
         return out;
     }
 };
-
 
 int main() {
     TRIETree *a = new TRIETree;
@@ -317,7 +385,9 @@ int main() {
 //    }
     cout << endl;
     a->del("badupa");
-    cout << *a;
+    cout << *a << endl;
+
+    cout << a->size();
 
     return 0;
 }
