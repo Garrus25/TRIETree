@@ -194,6 +194,17 @@ public:
         w przeciwnym wypadku
         zwracamy wartość odpowiadającą danemu słowu
      */
+
+    /** Służy do zwrócenia wartości korzneia
+     *
+     * @return korzeń
+     *
+     * zwracamy korzeń
+     */
+    Node* getRoot(){
+        return root;
+    }
+
     int get(string key) {
         Node *x = get(root, key, 0);
         if (x == nullptr) return 0;
@@ -366,29 +377,92 @@ public:
         }
         return out;
     }
+    /**
+     * Służy do sprawdzenia czy drzewo jest puste
+     *
+     * @return - czy drzewo jest puste
+     *
+     * jeśli rozmiar = 0 zwracamy true
+     * w przeciwnym wypadku false
+     */
+    bool isEmpty(){
+        if (size() == 0) return true;
+        return false;
+    }
 };
 
 int main() {
     TRIETree *a = new TRIETree;
-    a->insert("xkw", 5);
-    a->insert("banan", 4);
-    a->insert("badupa", 6);
-    a->insert("dupaa", 456);
-    a->insert("asdf", 234);
-//
-//    cout << a->contains("banan") << endl;
-//    cout << a->contains("dupa") << endl;
-//    cout << a->longestPrefixOf("asdff")<<endl;
-    cout << *a;
-//    for (auto x : a->keysThatMatch("ba...")) {
-//        cout << x << endl;
+
+    cout << " a->isEmpty():1: " << a->isEmpty() << endl;
+    cout << " a->size():0: " << a->size() << endl;
+
+    a->insert("banan", 1);
+    a->insert("bananan", 2);
+    a->insert("stos", 3);
+    a->insert("stosy", 4);
+    a->insert("stosowany", 5);
+    a->insert("baner", 6);
+
+//    for (int i = 6; i < 500; ++i) {
+//        a->insert(, 5);
 //    }
+
+    cout << " a->isEmpty():0 " << a->isEmpty() << endl;
+    cout << " a->size():5 " << a->size() << endl;
     cout << endl;
-    a->del("badupa");
+
     cout << *a << endl;
 
-    cout << a->size();
+    cout << "a->get(\"banan\"): 1:" << a->get("banan") << endl;
+    cout << "a->get(\"bananan\"): 2:" << a->get("bananan") << endl;
+    cout << "a->get(\"stos\"): 3:" << a->get("stos") << endl;
+    cout << "a->get(\"stosy\"): 4:" << a->get("stosy") << endl;
+    cout << "a->get(\"stosowany\"): 5:" << a->get("stosowany") << endl;
+    cout << "a->get(\"zastosowany\"): 0:" << a->get("zastosowany") << endl;
 
+    cout << endl;
+    cout << "a->contains(\"banan\"): 1:" << a-> contains("banan") << endl;
+    cout << "a->contains(\"bananan\"): 1:" << a-> contains("bananan") << endl;
+    cout << "a->contains(\"stos\"): 1:" << a-> contains("stos") << endl;
+    cout << "a->contains(\"stosy\"): 1:" << a-> contains("stosy") << endl;
+    cout << "a->contains(\"stosowany\"): 1:" << a-> contains("stosowany") << endl;
+    cout << "a->contains(\"zastosowany\"): 0:" << a-> contains("zastosowany") << endl;
+    cout << endl;
+
+    cout << "a->longestPrefixOf(\"banan\"):banan: "<< a->longestPrefixOf("banan") <<  endl;
+    cout << "a->longestPrefixOf(\"banansss\"):banan: " << a->longestPrefixOf("banansss") << endl;
+    cout << "a->longestPrefixOf(\"stosowac\"):stos: " << a->longestPrefixOf("stosowac") << endl;
+    cout << "a->longestPrefixOf(\"stosowanie\"):stos: " << a->longestPrefixOf("stosowanie") << endl;
+    cout << "a->longestPrefixOf(\"stosowanyy\"):stosowany: " << a->longestPrefixOf("stosowanyy") << endl;
+    cout << endl;
+
+    for (int i = 0; i < a->keys().size(); ++i) {
+        cout << a->keys()[i] << endl;
+    }
+
+    cout << endl;
+    vector<string> test = a->keysThatMatch("ban..");
+
+    for (auto & i : test) {
+        cout << i << endl;
+    }
+    cout << endl;
+
+    vector<string> test2;
+
+    a->collect(a->getRoot(),"","ban..",test2);
+
+    for (auto & i : test2) {
+        cout << i << endl;
+    }
+    cout << endl;
+
+    a->del("banan");
+    a->del("bananan");
+    a->del("baner");
+
+    cout << *a;
     return 0;
 }
 
